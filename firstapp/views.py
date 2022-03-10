@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from firstapp.models import Pizza
-from firstapp.forms import OrderForm  
+
+from firstapp.forms import OrderForm
+
 # Create your views here.
 def home(request):
     pizzas = Pizza.objects.all()
@@ -8,10 +10,10 @@ def home(request):
 
 def pizza_detail(request, pizza_id):
     pizza = get_object_or_404(Pizza, id=pizza_id)
-   form = OrderForm(initial={
+    form = OrderForm(initial={
         'pizza': pizza
     })
     return render(request, 'pizza_detail.html', {
         'pizza': pizza,
         'form': form
-    })
+    }) 
